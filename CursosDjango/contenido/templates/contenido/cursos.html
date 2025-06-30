@@ -1,0 +1,46 @@
+{% extends "contenido/padre.html"%}
+{% block titulo%}Cursos{% endblock %}
+{% block imagen%}
+	{%load static%}
+	{%static 'contenido/images/cursos.png'%}
+{%endblock%}
+{% block descripcion_modulo %}
+    Cursos <span>Listado de oportunidades</span>
+{% endblock %}
+{% block separacion %}
+  
+    <div class="page-header text-center mb-5">
+        <h2 class="fw-bold text-white bg-dark p-3 rounded">Cursos Disponibles</h2>
+    </div>
+{% endblock %}
+{% block contenido %}
+    <!-- Tabla de Alumnos -->
+    <table class="table table-bordered table-striped">
+        <thead>
+            <tr>
+                <th>Foto</th>
+                <th>Clave</th>
+                <th>Nombre</th>
+                <th>Nivel</th>
+                <th>Costo</th>
+            </tr>
+        </thead>
+
+        <tbody>
+            <tr>
+                <td class="text-center">
+                    <img src="" alt="" class="img-media">
+                </td>
+                <td class="text-semibold">UTM1234TIC</td>
+                <td class="muted">Nathalia</td>
+                <td class="muted">Tic</td>
+                <td class="muted">Matutino</td>
+            </tr>
+        </tbody>
+    </table>
+    <!-- /Tabla de Alumnos -->
+{% endblock %}
+
+
+
+

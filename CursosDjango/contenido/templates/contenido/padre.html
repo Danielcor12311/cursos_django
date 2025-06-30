@@ -1,0 +1,87 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>{% block titulo %}{% endblock %}</title>
+    {% load static %}
+
+  
+    <link href="{% static 'contenido/css/bootstrap.min.css' %}" rel="stylesheet" type="text/css">
+    <link href="{% static 'contenido/css/londinium-theme.css' %}" rel="stylesheet" type="text/css">
+    <link href="{% static 'contenido/css/styles.css' %}" rel="stylesheet" type="text/css">
+    <link href="{% static 'contenido/css/icons.css' %}" rel="stylesheet" type="text/css">
+    <link href="http://fonts.googleapis.com/css?family=Open+Sans:400,300,600,700&amp;subset=latin,cyrillic-ext" rel="stylesheet" type="text/css">
+
+ 
+    <script src="http://ajax.googleapis.com/ajax/libs/jquery/1.10.1/jquery.min.js"></script>
+    <script src="http://ajax.googleapis.com/ajax/libs/jqueryui/1.10.2/jquery-ui.min.js"></script>
+    <script src="js/bootstrap.min.js"></script>
+    <script src="js/application.js"></script>
+</head>
+
+<body style="margin: 0; font-family: 'Open Sans', sans-serif; background-color: #f5f5f5;">
+
+ 
+    <nav style="
+    background: linear-gradient(90deg, #6a11cb 0%, #2575fc 100%);
+    padding: 20px 30px;
+    color: white;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.2);
+    font-family: 'Open Sans', sans-serif;
+">
+
+    <div style="display: flex; align-items: center;">
+        <img src="{% block imagen %}{% endblock %}" alt="Usuario"
+             style="width: 50px; height: 50px; border-radius: 50%; margin-right: 15px; border: 2px solid white;">
+
+        <div style="display: flex; flex-direction: column;">
+            {% block descripcion_modulo %}
+                <strong style="font-size: 18px;">Contacto</strong>
+                <span style="opacity: 0.85; font-size: 14px;">Contáctanos</span>
+            {% endblock %}
+        </div>
+    </div>
+
+   
+    <div style="display: flex; gap: 30px; font-weight: 600; font-size: 16px;">
+        <a href="{% url 'Principal' %}" style="color: white; text-decoration: none;">
+            Inicio
+        </a>
+        <a href="{% url 'Cursos' %}" style="color: white; text-decoration: none;">
+            Cursos
+        </a>
+        <a href="{% url 'Contacto' %}" style="color: white; text-decoration: none;">
+            Contacto
+        </a>
+    </div>
+</nav>
+
+
+
+   
+      {% block separacion %}
+         {% endblock %}
+
+    
+        <div class="breadcrumb-line">
+            <ul class="breadcrumb">
+                
+                    <a href="{% url 'Principal' %}">
+                        {% if request.path == '/' %}
+                            Principal
+                        {% else %}
+                            Principal {{ request.path }}
+                        {% endif %} 
+                    </a>
+                
+            </ul>
+        </div>
+   {% block contenido %}
+   {% endblock %}
+
+</body>
+</html>

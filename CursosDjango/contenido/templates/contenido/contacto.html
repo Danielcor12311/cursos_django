@@ -1,0 +1,64 @@
+{% extends "contenido/padre.html"%}
+{% block titulo%}Contacto{% endblock %}
+{% block imagen%}
+	{%load static%}
+	{%static 'contenido/images/phone.png'%}
+{%endblock%}
+{% block descripcion_modulo %}
+    Contacto <span>Contactanos</span>
+{% endblock %}
+{% block separacion %}
+    <div class="page-header mb-4 text-left" style="margin-top: 20px; margin-left: 20px;">
+        <h2>Contacto</h2>
+    </div>
+{% endblock %}
+{% block contenido %}
+<div style="margin-top: 20px; margin-left: 20px;">
+    <form class="p-5 shadow-sm" style="max-width: 600px; border-radius: 20px; font-family: 'Open Sans', sans-serif;">
+        <!-- Nombre -->
+        <div class="mb-4">
+            <label for="nombre" class="form-label" style="font-weight: 600; color: #333;">Nombre</label>
+            <input type="text" name="nombre" id="nombre" class="form-control"
+                   placeholder="Escribe tu nombre"
+                   style="border-radius: 10px; padding: 12px; border: 1px solid #ccc;">
+        </div>
+
+        <!-- Correo -->
+        <div class="mb-4">
+            <label for="correo" class="form-label" style="font-weight: 600; color: #333;">Correo electrónico</label>
+            <input type="email" name="correo" id="correo" class="form-control"
+                   placeholder="ejemplo@correo.com"
+                   style="border-radius: 10px; padding: 12px; border: 1px solid #ccc;">
+        </div>
+
+        <!-- Curso -->
+        <div class="mb-4">
+            <label for="curso" class="form-label" style="font-weight: 600; color: #333;">Curso</label>
+            <select name="curso" id="curso" class="form-select"
+                    style="border-radius: 10px; padding: 12px; border: 1px solid #ccc;">
+                <option disabled selected>Selecciona un curso</option>
+                <option>Base de Datos</option>
+                <option>Programación</option>
+                <option>Desarrollo Web</option>
+            </select>
+        </div>
+
+        <!-- Comentarios -->
+        <div class="mb-4">
+            <label for="comentarios" class="form-label" style="font-weight: 600; color: #333;">Comentarios</label>
+            <textarea name="comentarios" id="comentarios" rows="4" class="form-control"
+                      placeholder="Escribe tus comentarios aquí..."
+                      style="border-radius: 10px; padding: 12px; resize: none; border: 1px solid #ccc;"></textarea>
+        </div>
+
+        <!-- Botón de enviar -->
+        <div class="text-end">
+            <button type="submit" class="btn"
+                    style="background-color: #1f2d3d; color: white; padding: 10px 30px; font-weight: 600; border-radius: 10px; box-shadow: 0 4px 12px rgba(0,0,0,0.1); transition: background-color 0.3s ease;">
+                Enviar
+            </button>
+        </div>
+    </form>
+</div>
+{% endblock %}
+

@@ -22,10 +22,14 @@ from cursos import views as views_cursos
 
 urlpatterns = [
     path('admin/', admin.site.urls),
-
+    path('eliminarCurso/<int:id>/', views_cursos.eliminarCurso, name='Eliminar'),
+    path('formEditarCurso/<int:id>/', views_cursos.consultarCursoIndividual, name='consultarCursoIndividual'),
+    path('editarCurso/<int:id>/', views_cursos.editarCurso, name='Editar'),
     path('', views.principal, name='Principal'),
     path('cursos/', views_cursos.cursos, name='Cursos'),
+    path('registrar/', views_cursos.registrar, name='AgregarCurso'),
     path('contacto/', views.contacto, name='Contacto'),
+
 ]
 
 if settings.DEBUG:

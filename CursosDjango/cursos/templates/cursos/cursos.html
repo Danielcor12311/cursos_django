@@ -1,48 +1,56 @@
-{% extends "contenido/padre.html"%}
-{% block titulo%}Cursos{% endblock %}
-{% block imagen%}
-	{%load static%}
-	{%static 'contenido/images/cursos.png'%}
-{%endblock%}
+{% extends "contenido/padre.html" %}
+
+{% block titulo %}Cursos{% endblock %}
+
+{% block imagen %}
+    {% load static %}
+    {% static 'contenido/images/cursos.png' %}
+{% endblock %}
+
 {% block descripcion_modulo %}
     Cursos <span>Listado de oportunidades</span>
 {% endblock %}
+
 {% block separacion %}
-  
     <div class="page-header text-center mb-5">
         <h2 class="fw-bold text-white bg-dark p-3 rounded">Cursos Disponibles</h2>
     </div>
 {% endblock %}
+
 {% block contenido %}
-    <!-- Tabla de Alumnos -->
-    <table class="table table-bordered table-striped">
-        <thead>
-            <tr>
-                <th>Foto</th>
-                <th>Clave</th>
-                <th>Nombre</th>
-                <th>Nivel</th>
-                <th>Costo</th>
-            </tr>
-        </thead>
+    <div class="table-responsive">
+        <table class="table table-bordered table-striped align-middle">
+            <thead class="table-dark text-center">
+                <tr>
+                    <th>Foto</th>
+                    <th>Nombre</th>
+                    <th>Nivel</th>
+                    <th></th>
+                    <th></th>
+                </tr>
+            </thead>
+            <tbody>
+                {% for curso in cursos %}
+                <tr>
+                    <td class="text-center">
+                        <img src="{{ curso.imagen.url }}" alt="Imagen de {{ curso.nombre }}" class="img-fluid rounded" style="max-width: 100px;">
+                    </td>
+                    <td>{{ curso.nombre }}</td>
+                    <td>{{ curso.nivel }}</td>
+                    <td class="text-center">
+                        <a href="{% url 'Eliminar' curso.id %}" class="btn btn-danger btn-sm">Eliminar</a>
+                    </td>
+                    <td class="text-center">
+                        <a href="{% url 'consultarCursoIndividual' curso.id %}" class="btn btn-primary btn-sm">Editar</a>
+                    </td>
+                </tr>
+                {% endfor %}
+            </tbody>
+        </table>
+    </div>
 
-        <tbody>
-            {% for curso in cursos %}
-            <tr>
-                <td class="text-center">
-                    <img src="{{curso.imagen.url}}" alt="" class="img-media">
-                </td>
-                <td class="text-semibold">{{curso.clave}}</td>
-                <td class="muted">{{curso.nombre}}</td>
-                <td class="muted">{{curso.nivel}}</td>
-                <td class="muted">{{curso.precio}}</td>
-            </tr>
-            {% endfor %}
-        </tbody>
-    </table>
-    <!-- /Tabla de Alumnos -->
+    <!-- Botón para agregar cursos -->
+    <div class="text-end mt-3">
+        <a href="{% url 'AgregarCurso' %}" class="btn btn-success">Agregar Curso</a>
+    </div>
 {% endblock %}
-
-
-
-

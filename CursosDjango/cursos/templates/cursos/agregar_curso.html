@@ -1,0 +1,89 @@
+{% extends "contenido/padre.html" %}
+
+{% block titulo %}Agregar Curso{% endblock %}
+
+{% block imagen %}
+    {% load static %}
+    {% static 'contenido/images/cursos.png' %}
+{% endblock %}
+
+{% block descripcion_modulo %}
+    Nuevo Curso <span>Formulario de registro</span>
+{% endblock %}
+
+{% block separacion %}
+    <div class="page-header">
+        <div class="page-title">
+            <h3>Agregar Curso
+                <small>Ingresa los datos del curso</small>
+            </h3>
+        </div>
+    </div>
+{% endblock %}
+
+{% block contenido %}
+    <form class="form-horizontal" action="{% url 'AgregarCurso' %}" method="post" enctype="multipart/form-data" role="form">
+        {% csrf_token %}
+        <div class="panel panel-default">
+            <div class="panel-body">
+                <!-- Nombre -->
+                <div class="form-group row mb-3">
+                    <label for="id_nombre" class="col-sm-2 control-label text-right">Nombre:</label>
+                    <div class="col-sm-10">
+                        <input type="text" name="nombre" id="id_nombre" class="form-control" maxlength="100" required>
+                    </div>
+                </div>
+
+                <!-- Descripción -->
+                <div class="form-group row mb-3">
+                    <label for="id_descripcion" class="col-sm-2 control-label text-right">Descripción:</label>
+                    <div class="col-sm-10">
+                        <textarea name="descripcion" id="id_descripcion" cols="30" rows="4" class="form-control" required></textarea>
+                    </div>
+                </div>
+
+                <!-- Nivel (select) -->
+                <div class="form-group row mb-3">
+                    <label for="id_nivel" class="col-sm-2 control-label text-right">Nivel:</label>
+                    <div class="col-sm-10">
+                        <select name="nivel" id="id_nivel" class="form-select" required>
+                            <option value="" disabled selected>Seleccione nivel</option>
+                            <option value="Principiante">Principiante</option>
+                            <option value="Intermedio">Intermedio</option>
+                            <option value="Avanzado">Avanzado</option>
+                        </select>
+                    </div>
+                </div>
+
+                <!-- Precio -->
+                <div class="form-group row mb-3">
+                    <label for="id_precio" class="col-sm-2 control-label text-right">Precio:</label>
+                    <div class="col-sm-10">
+                        <input type="number" name="precio" id="id_precio" class="form-control" step="0.01" min="0" placeholder="0.00" required>
+                    </div>
+                </div>
+
+                <!-- Fecha de Inicio -->
+                <div class="form-group row mb-3">
+                    <label for="id_fecha_inicio" class="col-sm-2 control-label text-right">Fecha de Inicio:</label>
+                    <div class="col-sm-10">
+                        <input type="date" name="fecha_inicio" id="id_fecha_inicio" class="form-control" required>
+                    </div>
+                </div>
+
+                <!-- Imagen -->
+                <div class="form-group row mb-3">
+                    <label for="id_imagen" class="col-sm-2 control-label text-right">Imagen:</label>
+                    <div class="col-sm-10">
+                        <input type="file" name="imagen" id="id_imagen" class="form-control">
+                    </div>
+                </div>
+
+                <div class="form-actions text-right">
+                    <input type="submit" value="Guardar Curso" class="btn btn-primary">
+                    <a href="{% url 'Cursos' %}" class="btn btn-secondary ms-2">Cancelar</a>
+                </div>
+            </div>
+        </div>
+    </form>
+{% endblock %}
